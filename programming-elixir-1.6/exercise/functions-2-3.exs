@@ -1,10 +1,9 @@
 # Exercise: Functions-2
-
-# “Write a function that takes three arguments.
+# Write a function that takes three arguments.
 # If the first two are zero, return “FizzBuzz.”
 # If the first is zero, return “Fizz.”
 # If the second is zero, return “Buzz.” Otherwise return the third argument.
-#Do not use any language features that we haven’t yet covered in this book.
+# Do not use any language features that we haven’t yet covered in this book.
 
 fizz_buzz = fn
   (0, 0, _) -> "FizzBuzz"
