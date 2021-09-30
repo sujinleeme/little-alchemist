@@ -19,12 +19,8 @@ end
 # You should get “Buzz, 11, Fizz, 13, 14, FizzBuzz, 16.
 
 iteration = 6
-fizz_buzz_params = &({rem(&1, 3), rem(&1, 5), &1})
-
-fizz_buzz_with_rem = fn n -> Enum.map(0..iteration, fn(i) ->
-  case fizz_buzz_params.(i + n) do
-    {x, y, z} -> fizz_buzz.(x, y, z)
-  end
-end) |> Enum.join(", ") end
+fizz_buzz_with_rem = fn n -> Enum.map(0..iteration, &(
+  fizz_buzz.(rem(n+&1, 3), rem(n+&1, 5), n+&1)
+)) |> Enum.join(", ") end
 
 IO.inspect fizz_buzz_with_rem.(10)
