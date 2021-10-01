@@ -19,8 +19,8 @@ end
 # You should get “Buzz, 11, Fizz, 13, 14, FizzBuzz, 16.
 
 iteration = 6
-fizz_buzz_with_rem = fn n -> Enum.map(0..iteration, &(
+calculate_fizz_buzz = fn n -> Enum.map(0..iteration, &(
   fizz_buzz.(rem(n+&1, 3), rem(n+&1, 5), n+&1)
 )) |> Enum.join(", ") end
 
-IO.inspect fizz_buzz_with_rem.(10)
+IO.inspect calculate_fizz_buzz.(10)
