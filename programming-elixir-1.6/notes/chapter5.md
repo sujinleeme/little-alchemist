@@ -63,3 +63,52 @@ handle_open = ​fn​
 IO.puts handle_open.(File.open(​"​​Rakefile"​))      ​# call with a file that exists​
 IO.puts handle_open.(File.open(​"​​nonexistent"​))   ​# and then with one that doesn't​”
 ```
+
+### Functions can return functions
+
+Bad
+
+```elixir
+​iex>​ fun1 = ​fn​ -> ​fn​ -> ​"​​Hello"​ ​end​ ​end
+iex>​ fun1.()
+​​iex>​ fun1.().()
+"Hello"
+```
+
+Good: Use parentheses to make the inner function more obvious.
+
+```elixir
+​iex>​ fun1 = ​fn​ -> (​fn​ -> ​"​​Hello"​ ​end​) ​end
+​iex>​ other = fun1.()
+iex> other.()
+"Hello"
+```
+
+Functions remember their original environment.
+
+```elixir
+iex>​ greeter = ​fn​ name -> (​fn​ -> ​"​​Hello ​​#{​name​}​​"​ ​end​) end​
+​#Function<12.17052888 in :erl_eval.expr/5>
+​iex>​ dave_greeter = greeter.(​"​​Dave"​)
+​#Function<12.17052888 in :erl_eval.expr/5>
+​iex>​ dave_greeter.()
+​"Hello Dave”
+```
+
+Why? Elixir automatically carry with them the bindings of variables in the scope in which they are defined. In this example, the variable `name` is bound in the scope of the outer function. When the inner function is defined, it inherits this scope and carries the binding of name around with it.
+This is _closure_. The scope encloses the bindings of its variables, packaging them into something that can be saved and used later.
+
+Parameterized function
+
+Each time we call the outer function, we give it a value for n and it returns a function that adds n to its own parameter.
+
+```elixir
+iex>​ add_n = ​fn​ n -> (​fn​ other -> n + other ​end​) ​end​
+​iex>​ add_two = add_n.(2)
+​​iex>​ add_five = add_n.(5)
+​iex>​ add_two.(3)
+​5
+iex>​ add_five.(7)
+​12
+```
+
