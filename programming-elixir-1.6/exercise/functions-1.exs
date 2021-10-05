@@ -17,8 +17,8 @@ sum = &(&1 + &2 + &3)
 # pair_tuple_to_list = &Tuple.to_list(&1)
 # pair_tuple_to_list = &Tuple.to_list/1
 
-# pair_tuple_to_list = fn {a, b} -> [a, b] end
-pair_tuple_to_list = &([elem(&1, 0), elem(&1, 1)])
+pair_tuple_to_list = fn {a, b} -> [a, b] end
+# pair_tuple_to_list = &([elem(&1, 0), elem(&1, 1)])
 
 # Print outputs
 IO.inspect list_concat.([:a, :b], [:c, :d]), label: "Func: list_concat"
