@@ -1,4 +1,3 @@
-# Exercise: Modules and Functions-1 (Page 55)
 # Chapter 6: Modules and Named Functions
 
 # Exercise: Modules and Functions-1 (Page 55)
