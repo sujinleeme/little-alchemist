@@ -5,6 +5,7 @@
 # - Run the result in iex. Use both techniques to compile the file.
 # - Add a quadruple function. (Maybe it could call the double function….)
 
+# Answer
 defmodule Times do
   def double(n), do: n * 2
   def triple(n), do: n * 3
