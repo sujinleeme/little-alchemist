@@ -36,6 +36,7 @@ Good:
 defmodule Factorial do
   def of(0), do: 1
   def of(n), do: n * of(n-1)
+end
 ```
 
 Bad:
@@ -44,7 +45,7 @@ Bad:
 defmodule BadFactorial do
   def​ of(n), ​do​: n * of(n-1)
   def​ of(0), ​do​: 1
-​​en​
+​end
 ```
 
 The first function definition will always match and the second will never be called.
