@@ -2,6 +2,7 @@ defmodule MathTest do
   use ExUnit.Case, async: true
 
   describe "test sum() to calculate the sum of the integers from 1 to n" do
+
     test "should return 0 if the integer is 0" do
       assert Math.sum(0) == 0
     end
