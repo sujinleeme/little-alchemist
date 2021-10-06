@@ -21,3 +21,30 @@ iex > Times.double(4)
 
 Use the `c` helper to compile a file without returning to the command line.
 
+## Function calls and pattern matching
+
+Factorial function
+
+```
+Factorial(0) -> 1
+Factorial(n) -> n * factorial(n - 1)
+```
+
+Good:
+
+```elixir
+defmodule Factorial do
+  def of(0), do: 1
+  def of(n), do: n * of(n-1)
+```
+
+Bad:
+
+```elixir
+defmodule BadFactorial do
+  def​ of(n), ​do​: n * of(n-1)
+  def​ of(0), ​do​: 1
+​​en​
+```
+
+The first function definition will always match and the second will never be called.
