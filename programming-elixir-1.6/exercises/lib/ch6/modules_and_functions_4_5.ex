@@ -14,8 +14,10 @@
 defmodule Math do
   def sum(0), do: 0
   def sum(1), do: 1
-  def sum(n), do: n + sum(n - 1)
+  def sum(n) when is_integer(n) and n > 1 do
+    n + sum(n - 1)
+  end
 
   def gcd(x, 0), do: x
-  def gcd(x, y), do: gcd(y, rem(x, y))
+  def gcd(x, y) when is_integer(x) and is_integer(y), do: gcd(y, rem(x, y))
 end
