@@ -8,13 +8,13 @@
 
 ## Compiling a module
 
-```
+```elixir
 iex> times.exs
 ```
 
 Give IEx a source file’s name, and it compiles and loads the file before it displays a promp.
 
-```
+```elixir
 iex> c "times.exs"
 iex > Times.double(4)
 ```
@@ -25,7 +25,7 @@ Use the `c` helper to compile a file without returning to the command line.
 
 Factorial function
 
-```
+```elixir
 Factorial(0) -> 1
 Factorial(n) -> n * factorial(n - 1)
 ```
@@ -148,3 +148,102 @@ IO.puts Params.func([99])         # You said 123 with a list
 IO.puts Params.func([99], "dog")  # You said dog with a list
 ```
 
+### Private Functions
+
+`~defp` macro defines a private function—one that can be called only within the module that declares it.
+
+```elxiir
+people = DB.find_customers
+orders = Orders.for_customers(people)
+​tax    = sales_tax(orders, 2018)
+​filing = prepare_filing(tax)
+```
+
+```
+filing = prepare_filing(sales_tax(Orders.for_customers(DB.find_customers), 2018))
+filing = DB.find_customers
+          |> Orders.for_customers
+          |> sales_tax(2018)
+          |> prepare_filing”
+```
+
+## Modules
+
+Elixir programmers use nested modules to impose structure for readability and reuse. After all, every programmer is a library write. All modules are defined at the top level.
+
+```elixir
+defmodule Outer do
+  defmodule Inner do
+    def inner_func do
+    end
+  end
+  
+  def outer_func do
+    Inner.inner_func
+  end
+end
+
+Outer.outer_func
+Outer.Inner.inner_func
+```
+
+We can directly define a nested module.
+
+```elixir
+defmodule Mix.Tasks.Doctest do
+  def run do
+  end
+end
+```
+
+### Directives for Modules
+
+[alias, require, and import](https://elixir-lang.org/getting-started/alias-require-and-import.html) are “lexically scoped” meaning that they can be used inside a module and apply to the whole module body, or inside individual functions and apply to the scope of that functions only.
+
+https://medium.com/@vas.manoli/elixirs-alias-require-and-import-d28e3acf4d79
+
+### Module attributes
+
+Inside a module, you can access attributes by prefixing the name with an at sign (`@`).
+ Each item of metadata is called an attribute of the module and is identified by a name.
+```
+@name  value
+```
+
+```elixir
+​defmodule​ Example ​do​
+​ 	  @author  ​"​​Dave Thomas"​
+​ 	  ​def​ get_author ​do​
+​ 	    @author
+​ 	  ​end​
+​ 	​end​
+​ 	IO.puts ​"​​Example was written by ​​#{​Example.get_author​}​"
+```
+
+```elixir
+“​ 	​defmodule​ Example ​do​
+​ 	  @attr ​"​​one"​
+​ 	  ​def​ first, ​do​: @attr
+​ 	  @attr ​"​​two"​
+​ 	  ​def​ second, ​do​: @attr
+​ 	​end​
+​ 	IO.puts ​"​​#{​Example.second​}​​  ​​#{​Example.first​}​​"​ 
+```
+
+### Module Names: Elixir, Erlang, and Atoms
+
+
+```elixir
+iex>​ is_atom IO
+​ 	true
+​ 	​iex>​ to_string IO
+​ 	"Elixir.IO"
+​ 	​iex>​ ​:"Elixir.IO"​ === IO
+​ 	true
+```
+
+Such as `IO`, Elixir converts it internally into an atom of the same name with `Elixir`. So a call to a function in a module is really an atom followed by a dot followed by the function name
+
+## # “Calling a Function in an Erlang Library
+
+Erlang module `timer` is, the atom `timer` and Elixir, we write that as `:timer`. To use `tc` function, you'd write ` :timer.rc`.

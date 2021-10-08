@@ -8,6 +8,7 @@
 
 ### Syntax
 
+
 ```elixir
 iex>​ sum = ​fn​ (a, b) -> a + b ​end​
 #Function<12.17052888 in :erl_eval.expr/5>
