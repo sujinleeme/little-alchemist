@@ -135,5 +135,3 @@ Because `[]` and `{}` are operators in Elixir, literal lists and tuples can also
 ```
 
 The basis of programming is transforming data. Functions are the little engines that perform that transformation.
-
-
