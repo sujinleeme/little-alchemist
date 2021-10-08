@@ -9,17 +9,12 @@
 # Do not use any language features that we haven’t yet covered in this book.
 # -------
 
-# -------
-# Answer
-
 fizz_buzz = fn
-  (0, 0, _) -> "FizzBuzz"
-  (0, _, _) -> "Fizz"
-  (_, 0, _) -> "Buzz"
-  (_, _, n) -> n
+  0, 0, _ -> "FizzBuzz"
+  0, _, _ -> "Fizz"
+  _, 0, _ -> "Buzz"
+  _, _, n -> n
 end
-
-# -------
 
 # -------
 # Exercise: Functions-3
@@ -29,14 +24,12 @@ end
 # You should get “Buzz, 11, Fizz, 13, 14, FizzBuzz, 16.
 # -------
 
-# -------
-# Answer
-
 iteration = 6
-calculate_fizz_buzz = fn n -> Enum.map(0..iteration, &(
-  fizz_buzz.(rem(n+&1, 3), rem(n+&1, 5), n+&1)
-)) |> Enum.join(", ") end
 
-IO.inspect calculate_fizz_buzz.(10)
+calculate_fizz_buzz = fn n ->
+  Enum.map(0..iteration, &fizz_buzz.(rem(n + &1, 3), rem(n + &1, 5), n + &1)) |> Enum.join(", ")
+end
+
+IO.inspect(calculate_fizz_buzz.(10))
 
 # -------

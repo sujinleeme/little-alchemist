@@ -13,12 +13,7 @@
 # "​Elixir Rocks"​”
 # -------
 
-# -------
-# Answers
-
 prefix = fn pre -> fn word -> "#{pre} #{word}" end end
 mrs = prefix.("Mrs")
-IO.inspect mrs.("Smith")
-IO.inspect prefix.("Elixir").("Rocks")
-
-# -------
+IO.inspect(mrs.("Smith"))
+IO.inspect(prefix.("Elixir").("Rocks"))

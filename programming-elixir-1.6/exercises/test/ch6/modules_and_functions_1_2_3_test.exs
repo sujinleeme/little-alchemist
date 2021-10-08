@@ -1,9 +1,9 @@
-defmodule TimesTest do
+defmodule Times.Test do
   use ExUnit.Case, async: true
 
   describe "Times" do
     test "multiply given number and 2" do
-      assert Times.double(4) == 8
+      assert Times.double(4) === 8
     end
 
     test "multiply given number and 3" do
