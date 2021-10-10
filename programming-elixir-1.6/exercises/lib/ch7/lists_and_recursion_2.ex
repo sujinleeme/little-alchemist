@@ -10,7 +10,8 @@ defmodule MyList.Exercise2 do
 
   def max([head | tail]) when is_integer(head) === false, do: max([tail])
 
-  def max([head | [next | tail]]) when is_integer(next) === false or head > next, do: max([head | tail])
+  def max([head | [next | tail]]) when is_integer(next) === false or head > next,
+    do: max([head | tail])
 
   def max([_head | tail]), do: max(tail)
 end
