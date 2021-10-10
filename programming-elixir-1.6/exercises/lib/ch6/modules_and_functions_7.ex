@@ -1,4 +1,5 @@
 # -------
+# Chapter 6: Modules and Named Functions
 # Exercise: Modules and Functions-7 (Page 70)
 #
 # Find the library functions to do the following, and then use each in iex. (If
