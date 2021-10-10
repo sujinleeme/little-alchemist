@@ -27,9 +27,6 @@
 # - Guard clauses are your friends
 # - Patterns can match the low and high parts of a range ( a..b=4..8 ).
 
-# ------
-# Answer
-# ------
 defmodule Chop do
   def guess(actual, low..high = range) when actual in low..high and is_integer(actual) do
     guess = div(low + high, 2)

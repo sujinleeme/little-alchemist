@@ -1,4 +1,4 @@
-defmodule ChopTest do
+defmodule Chop.Test do
   use ExUnit.Case, async: true
   import ExUnit.CaptureIO
 
