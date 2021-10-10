@@ -13,9 +13,11 @@ defmodule MyList.Exercise1.Test do
     end
 
     test "should raise FunctionClauseError if any elements of the list are noninteger" do
-      assert_raise FunctionClauseError, "no function clause matching in MyList.Exercise1.mapsum/2", fn ->
-        MyList.Exercise1.mapsum([1, "2", 3], &(&1 + &1))
-      end
+      assert_raise FunctionClauseError,
+                   "no function clause matching in MyList.Exercise1.mapsum/2",
+                   fn ->
+                     MyList.Exercise1.mapsum([1, "2", 3], &(&1 + &1))
+                   end
     end
   end
 end

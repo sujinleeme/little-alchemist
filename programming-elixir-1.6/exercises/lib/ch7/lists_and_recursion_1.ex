@@ -11,5 +11,5 @@
 defmodule MyList.Exercise1 do
   def mapsum([], _func), do: 0
 
-  def mapsum([ head | tail ], func) when is_integer(head), do: func.(head) + mapsum(tail, func)
+  def mapsum([head | tail], func) when is_integer(head), do: func.(head) + mapsum(tail, func)
 end
