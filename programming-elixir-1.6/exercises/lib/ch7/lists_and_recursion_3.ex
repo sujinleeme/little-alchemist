@@ -1,7 +1,7 @@
 # -------
 # Chapter 7: Lists and Recursion
 #
-# Exercise: Lists and Recursion-3 (Page 78)
+# Exercise: Lists and Recursion-3 (Page 78) : Caesar cipher
 # An Elixir single quoted string is actually a list of individual character codes.
 # Write a function caesar(list, n) that adds n to each element of the list, but
 # wrapping if the addition results in a character greater than z.
