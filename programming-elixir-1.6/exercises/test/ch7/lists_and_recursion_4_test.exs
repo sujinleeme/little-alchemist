@@ -14,8 +14,8 @@ defmodule MyList.Exercise4.Test do
 
     test "returns a list of numbers incremented by 1 from '7' to '8'" do
       expected_output = [7, 8, 9]
-      IO.inspect expected_output, charlists: false
-      # It will print ..........[7, 8, 9]
+      # IO.inspect expected_output, charlists: false
+      ## It will print ..........[7, 8, 9]
       assert expected_output === MyList.Exercise4.span(7, 9)
     end
 
