@@ -1,5 +1,11 @@
 # Miscellaneous
 
+## Fun facts
+
+- [`mix` comes from `mixing the elixir`](https://twitter.com/rrrene/status/1420340262962962434
+) - René Föhring
+    - [Who's mixing elixirs? Hex](https://twitter.com/itshq1/status/1420377810300977158).
+
 ## Remove zero width space character (U+200B) in VSCode
 
 I faced the Zero Width Space character (U+200B) trap in VSCode on the way to do elixir coding.
