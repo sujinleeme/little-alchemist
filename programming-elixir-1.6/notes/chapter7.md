@@ -22,13 +22,13 @@ end
 
 ```elixir
 len([11,12,13,14,15])
-​ 	= 1 + len([12,13,14,15])
-​ 	= 1 + 1 + len([13,14,15])
-​ 	= 1 + 1 + 1 + len([14,15])
-​ 	= 1 + 1 + 1 + 1 + len([15])
-​ 	= 1 + 1 + 1 + 1 + 1 + len([])
-​ 	= 1 + 1 + 1 + 1 + 1 + 0
-​ 	= 5
+​  = 1 + len([12,13,14,15])
+​  = 1 + 1 + len([13,14,15])
+​  = 1 + 1 + 1 + len([14,15])
+​  = 1 + 1 + 1 + 1 + len([15])
+​  = 1 + 1 + 1 + 1 + 1 + len([])
+​  = 1 + 1 + 1 + 1 + 1 + 0
+​  = 5
 ```
 
 We have a `compilation warning` — we never used the variable head in the body of our function.
@@ -92,7 +92,6 @@ end
 
 It gets only elements that have `location_id = 27` from the data.
 
-
 ```elixir
 defmodule WeatherHistory do
 
@@ -131,7 +130,6 @@ iex> for_location_27(test_data)
 ```
 
 Now, it filters elements by a location prarm.
-
 
 ```elixir
 defmodule WeatherHistory do
@@ -196,3 +194,47 @@ end
 ```
 
 The filter doesn't care about he other three fileds in the head. It just needs the location.
+
+```elixir
+   #
+​  # Concatenate lists
+​  #
+​  ​iex>​ [1,2,3] ++ [4,5,6]
+​  [1, 2, 3, 4, 5, 6]
+​  #
+​  # Flatten
+​  #
+​  ​iex>​ List.flatten([[[1], 2], [[[3]]]])
+​  [1, 2, 3]
+​  #
+​  # Folding (like reduce, but can choose direction)
+​  #
+​  ​iex>​ List.foldl([1,2,3], ​"​​"​, ​fn​ value, acc -> ​"​​#{​value​}​​(​​#{​acc​}​​)"​ ​end​)
+​  "3(2(1()))"
+​  ​iex>​ List.foldr([1,2,3], ​"​​"​, ​fn​ value, acc -> ​"​​#{​value​}​​(​​#{​acc​}​​)"​ ​end​)
+​  "1(2(3()))"
+​  #
+​  # Updating in the middle (not a cheap operation)
+​  #
+​  ​iex>​ list = [ 1, 2, 3 ]
+​  [ 1, 2, 3 ]
+​  ​iex>​ List.replace_at(list, 2, ​"​​buckle my shoe"​)
+​  [1, 2, "buckle my shoe"]
+​  #
+​  # Accessing tuples within lists
+​  #
+​  ​iex>​ kw = [{​:name​, ​"​​Dave"​}, {​:likes​, ​"​​Programming"​}, {​:where​, ​"​​Dallas"​, ​"​​TX"​}]
+​  [{:name, "Dave"}, {:likes, "Programming"}, {:where, "Dallas", "TX"}]
+​  ​iex>​ List.keyfind(kw, ​"​​Dallas"​, 1)
+​  {:where, "Dallas", "TX"}
+​  ​iex>​ List.keyfind(kw, ​"​​TX"​, 2)”
+ {:where, "Dallas", "TX"}
+​  ​iex>​ List.keyfind(kw, ​"​​TX"​, 1)
+​  nil
+​  ​iex>​ List.keyfind(kw, ​"​​TX"​, 1, ​"​​No city called TX"​)
+​  "No city called TX"
+​  ​iex>​ kw = List.keydelete(kw, ​"​​TX"​, 2)
+​  [name: "Dave", likes: "Programming"]
+​  ​iex>​ kw = List.keyreplace(kw, ​:name​, 0, {​:first_name​, ​"​​Dave"​})
+​  [first_name: "Dave", likes: "Programming"]
+```
