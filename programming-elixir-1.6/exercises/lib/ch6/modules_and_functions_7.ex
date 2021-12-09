@@ -21,7 +21,7 @@ IO.inspect(float_to_string)
 
 # Get the value of an operating system environment variable. (Elixir)
 dir = "HOME"
-env_path = System.get_env(HOME)
+env_path = System.get_env(dir)
 IO.inspect(env_path)
 
 # Return the extension component of a file name (so return .exs if given "dave/test.exs" (Elixir)
